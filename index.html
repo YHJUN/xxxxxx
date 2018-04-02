@@ -1,0 +1,293 @@
+{template '_header'}
+<style type="text/css">
+	ul,li{
+	 list-style: none
+	 }
+	 .scroll {
+	 height:1rem;
+	 width:100%;
+	 background:rgba(0,0,0,0.4);
+	 overflow:hidden;
+	 color: #fff; position: absolute;bottom:0;
+	 }
+	 .scroll ul { font-size: 0.7rem;
+	 width:100%;
+	 position:absolute;
+	 left:0;
+	 top:0;
+	 }
+	 .scroll li { color: red;
+	 height:1rem;
+	 line-height:1rem;
+	 }
+   #xieyi{
+background-color:#fff;width:100%;font-size:12px;display:none;height:100%; overflow:auto;border:1px solid #FFBA00;position:fixed;top:0px;left:0px;
+   }
+   .current{background:#5EB0F2;color:white;box-shadow:#000000 0px 1px 10px;}
+  .amount{
+margin-top:20px;background-color:#fff;width:45%;margin-left:3%;float:left;height:65px;text-align:center;padding-top:13px; border:1px solid #fff;
+  }
+  .amount.curren{
+    border:1px solid rgb(255, 186, 0);
+  }
+.submit{
+border-radius:5px;background:#339AEC;color:#FFF;width:61%;margin-left:17%;height:2rem;text-align:center;margin-top:2rem; line-height: 2rem; font-size: 0.8rem;"
+}
+	 body{overflow: auto;}
+	 label{width: 4rem; text-align: right; display: block;float: left; color: black; font-size:0.7rem;}
+</style>
+<style>
+body{font-family:'黑体'}
+div{vertical-align:center;font-size:20px;color:#000;}
+span{vertical-align:center;font-size:20px;color:#000;}
+div p{font-size:12px;color:rgb(42,167,223);}
+</style>
+ <div style="width:100%;background:url('{php echo EWEI_SHOPV2_LOCAL}/static/images/rechage_banner.png');position:relative;background-size:100% 100%;height:120px;font-size:30px;color:#FFF;">
+ 	<div id="scroll" class="scroll clearfix">
+ 		<em style="font-style: normal; font-size: 0.7rem;padding: 0 0.7rem;position: relative;top:-0.3rem; color: red;">通告：</em>
+	  	<ul style="margin-left:3rem;">
+			<li>现中石油已开通服务</li>
+			<li>现中石油已开通服务</li>
+		</ul>
+	</div>
+ </div>
+ <form action="" id="myform" method="post">
+  <div style="background: white;border-radius:9px; overflow: hidden; width: 80%; margin: 0.8rem auto 0; display: flex; justify-content: space-between;">
+    <span id="1type" class="oilCard current" style="width:46%;float:left;height:2rem; line-height:2rem; text-align:center;">
+    中石油
+   </span>
+   <span  id="2type" class="oilCard" style="width:46%;float:left;height:2rem;line-height:2rem; text-align:center;">
+    中石化
+   </span>
+  </div>
+  <p style="text-align: center; color: block;width: 88%;margin: 0 auto;line-height: 2.2rem;"><label>卡号：</label><input maxlength="19" minlength="16" id="card_num" name="card_num" value="{$mapping_order_1['remark']}" onkeyup="this.value=this.value.replace(/[^\d]/g,'') "  style="margin-top:10px;background-color:#fff;height:30px;font-size:0.7;padding:10px;border:1px;width:66%;" placeholder="请输入油卡卡号" /></p>
+  <p style="text-align: center; color: block;width: 88%;margin: 0 auto;line-height: 2.2rem;"><label>姓名：</label>
+  <input id="carrier_mobil" name="number" style="margin-top:8px;background-color:#fff;height:30px;width:66%;font-size:0.7;padding:10px;border:1px;" placeholder="请输持卡人姓名" value="{$member['number']}" /></p>
+  <p style="text-align: center; color: block;width: 88%;margin: 0 auto; line-height: 2.2rem;"><label>手机号：</label>
+<input id="carrier_mobile" name="carrier_mobile"   onkeyup="this.value=this.value.replace(/[^\d]/g,'') " style="margin-top:8px;font-size:0.7;background-color:#fff;height:30px;padding:10px;border:1px;width:66%;" placeholder="请输入联系电话" value="{$member['carrier_mobile']}" maxlength="11"  />
+</p>
+<input id="rechargecity" name="rechargecity" type="hidden" value="{$member['rechargecity']}"/>
+
+ <div id="100"  class="amount" data-num="100" data-sid="198">100
+  <p style="font-size" >
+  赠送100油币
+ </p>
+ </div>
+ <div id="200"  class="amount" data-num="200" data-sid="200">200
+  <p>
+  赠送200油币
+ </p>
+</div>
+ <div id="500"  class="amount" data-num="500" data-sid="199">500
+  <p>
+  赠送500油币
+ </p>
+</div>
+  <div id="1000"  class="amount" data-num="1000" data-sid="201">1000
+  <p>
+  赠送1000油币
+ </p>
+  </div>
+<br/><br/>
+ <input id="add_num" name="add_num" type="hidden" value='' /><br/><br/><br/>
+ 
+
+ <div id="xieyi">
+<p style="font-size:12px;color:#000">
+加油卡代充值服务协议</p>
+<p style="font-size:12px;color:#000">欢迎使用油博汇加油卡代充值服务（简称“油卡代充值服务”），为了保障您的权益，请在使用本服务前，详细阅读本协议的所有内容，本协议是使用服务的用户（以下简称“用户”或“您”）和油博汇就加油卡等相关事宜所订立的油卡代充值服务协议，具有法律效力。</p>
+<p style="font-size:12px;color:#000">
+一、协议声明<br/>
+1.油博汇通过互联网依法为用户提供油卡代充值、订单查询等服务，用户在完全同意本协议及油博汇规定的情况下，方有权使用油博汇的油卡代充值服务。<br/>
+2.您点击充值页面下“立即充值”按钮后，即视为您已阅读、了解并完全同意本协议的各项内容，并具有独立承担法律责任的能力。<br/>
+3.油博汇可能不时的修改本协议内容，一旦协议内容发生变动，油博汇将会在油博汇官网/手机APP上发布修改内容。在更改此服务协议时，变更理由等，一经正式发布即生效。如您继续使用油卡服务，则视为您已接受修订的协议。<br/>
+</p>
+<p style="font-size:12px;color:#000">
+二、服务说明<br/>
+1.油卡代充值服务仅支持中国石油发行的个人记名主卡和车队卡主卡、中国石化多用户卡中的主卡和单用户卡。<br/>
+2.油卡代充值服务不支持个人副卡、企业增值税发票主卡、企业副卡、过期卡、黑名单卡、挂失卡、注销卡、不存在的加油卡。<br/>
+3.车主需完成油博汇用户注册，即可使用油卡代充值服务。<br/>
+4.充值完成后请您携带加油卡到中国石油、中国石化任意发卡网点，将油卡资金圈存到加油卡中，即可使用充值资金加油。<br/>
+5.本服务是代充值服务，不提供充值发票。<br/>
+</p>
+<p style="font-size:12px;color:#000">
+三、免责条款<br/>
+油博汇不承担任何责任，包括但不限于：<br/>
+1.因不可抗力、系统故障、通讯故障、网络拥堵、供电系统故障、恶意攻击等造成油博汇未能及时、准确、完整的提供油卡充值服务。<br/>
+2.如用户利用系统差错、故障或其他原因导致的漏洞，损害油博汇的权益，油博汇将中止为该用户提供油卡服务，并保留追究法律责任的权利。<br/>
+3.油博汇负责对油博汇/手机APP上的信息进行审核与更新，但并不就信息的时效性、准确性以及服务功能的完整性和可靠性承担任何义务和赔偿责任。<br/>
+4.如果油博汇发现有影响用户信息安全的行为，油博汇有权采取对用户信息实施保护的措施。<br/>
+<p style="font-size:12px;color:#000">
+四、其他<br/>
+本协议之效力、解释、变更、执行与争议解决均只适用中华人民共和国法律。如缔约方就本协议内容或其执行发生任何争议，双方应尽力友好协商解决；协商不成时，任何一方均可向油博汇所在地有管辖权的人民法院提起诉讼。<br/>
+</p>
+5.油博汇对以下情形不作出任何承诺，包括但不限于：服务一定能符合您的要求；不会受中断；服务的安全性、及时性、完整性和准确性。<br/>
+6.车主应妥善保管账户、密码等信息资料，非因油博汇原因造成您的用户信息泄露，由此给您带来的损失，油博汇不承担任何责任。<br/>
+7.您在使用油博汇服务时，因个人原因产生的损失，油博汇不承担任何责任。<br/>
+</p>
+<p style="font-size:12px;color:#000">
+五、提示<br/>
+中石油系统维护升级中，工作日充值1——2天到账，中石化及时到账。<br/>
+</p>
+<font class="colseAgreement" style="padding-left:46%;color:rgb(42,167,223)">知道了</font> 
+ </div>
+ <div id='tijiao' class="submit"> 立即充值</div>
+ <font class="agreement" style="text-align:center;display:block;margin-top:3%;margin-left:5%;font-size:12px;">充值即表示同意油卡<font style="font-size:12px;color:rgb(42,167,223)">充值服务协议 </font></font>
+ <input id="add_type" name="add_type" value='1' type="hidden" />   
+  <input id="goodsid" name="id" value='' type="hidden" />
+ </form>
+  <div>
+ <script>
+var scrollIndex=0;
+var Timer=null;
+var index = {
+
+      init : function(){
+
+        this.bindEvent();
+        this.scroll();
+
+      },
+      bindEvent : function(){
+
+        var _this = this;
+
+        $('.agreement').on('click',function(){
+
+            $('#xieyi').show();
+
+        });
+
+        $('.colseAgreement').on('click',function(){
+
+            $('#xieyi').hide();
+ 
+        });
+
+        $('#2type').on('click',function(){
+
+          alert('暂未开通')
+
+        });
+
+        $('.amount').on('click',function(){
+
+           var num = $(this).attr('data-num');
+           var sid = $(this).attr('data-sid');
+           $(this).addClass('curren').siblings().removeClass('curren'); 
+           $('#add_num').val(num);
+           $('#goodsid').val(sid);
+
+        });
+
+        $('#tijiao').on('click',function(){
+
+            var formData = _this.validate();
+            if(formData.status){
+
+              $("#myform").submit();
+
+            }else{
+
+              alert(formData.msg);
+
+            }
+
+        });
+
+
+      },
+
+      scroll : function(){
+
+        clearInterval(Timer);
+        var ul=$("#scroll ul");
+        var li=ul.children("li");
+        var h=li.height();
+        var index=0;
+        ul.css("height",h*li.length*2);
+        ul.html(ul.html()+ul.html());    
+           function run()
+               {
+               if(scrollIndex>=li.length){
+                ul.css({top:0});
+                scrollIndex=1;
+                ul.animate({top:-scrollIndex*h},200);
+               } 
+               else{
+                scrollIndex++; 
+       
+                ul.animate({top:-scrollIndex*h},200);
+               }
+               }
+           Timer=setInterval(run,1500); 
+
+
+      },
+
+      validate : function(){
+
+        var formData = {
+
+              status         : false,
+              msg            : '',
+              card_num       : $('#card_num').val(),
+              carrier_mobil  : $('#carrier_mobil').val(),
+              carrier_mobile : $('#carrier_mobile').val(),
+              add_num        : $('#add_num').val()
+
+
+        };
+
+        if(formData.card_num == ''){
+
+          formData.msg = '卡号不能为空';
+
+        }else if(formData.card_num.length < 16){
+
+          formData.msg = '中石油卡号长度不够,长度为16位,请重新输入';
+
+        }else if(formData.carrier_mobil == ''){
+
+          formData.msg = '姓名不能为空';
+
+        }else if(formData.carrier_mobile == ''){
+
+          formData.msg = '手机号不能为空';
+
+
+        }else if(!(/^1[34578]\d{9}$/.test(formData.carrier_mobile))){
+
+          formData.msg = '手机格式错误';
+
+        }else if(formData.add_num == ''){
+
+          formData.msg = '请选择充值金额';
+
+        }else if(formData.add_num == 100){
+
+          formData.msg = '充值100元暂未开通,请选择其他金额充值';
+
+        }else{
+
+          formData.status = true;
+
+        }
+
+        
+        return formData;
+
+
+
+      },
+
+
+};
+
+index.init();
+
+
+
+  </script>
+
+{template '_footer'}
